@@ -1,0 +1,37 @@
+<p>
+    <b>Search</b>: <input ng-model="search">
+</p>
+
+<table class="table table-bordered">
+    <tr class="well">
+        <td class="tdRight" colspan="4" >
+            <a href="/#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                <span class="glyphicon glyphicon-shopping-cart"></span>
+                <span>{{cart.getTotalCount()}} items</span>, <span>{{cart.getTotalPrice() | currency}}</span>
+            </a>
+        </td>
+        <td class="tdRight" colspan="4">
+            <button
+                    class="btn btn-block btn-danger"
+                    ng-click="cart.clearItems()"
+                    ng-disabled="cart.getTotalCount() < 1" >
+                <i class="icon-trash icon-white" /> Clear cart
+            </button>
+        </td>
+    </tr>
+
+    <tr ng-repeat="product in products | orderBy:'price' | filter:search" >
+        <td>
+           {{product.name}}
+        </td>
+        <td class="tdRight">
+            {{product.price | currency}}
+        </td>
+        <td class="tdCenter">
+            <a href="" ng-click="cart.addItem(product.id, product.name, product.price, 1,product.inventory)">
+                add to cart
+            </a>
+        </td>
+    </tr>
+</table>
+
