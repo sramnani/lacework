@@ -1,2 +1,3 @@
+- Install express using npm install -g express
 - Run node server
-- load http://localhost:8084 on the browser
+- Load http://localhost:8084 on the browser
